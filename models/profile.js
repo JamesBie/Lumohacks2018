@@ -3,9 +3,9 @@ var mongoose = require("mongoose");
 var ProfileSchema = new mongoose.Schema ({
 
 	username: String,
- 	Street: {type: String, default: 'University Drive'},
- 	City: {type:String, default: 'Burnaby'},
- 	Province: {type:String, default: 'BC'}
+ 	street: {type: String, default: 'University Drive'},
+ 	city: {type:String, default: 'Burnaby'},
+ 	province: {type:String, default: 'BC'}
 // }, {timestamps: true
 });
 
