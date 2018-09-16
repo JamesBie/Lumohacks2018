@@ -69,7 +69,6 @@ app.get("/",function(req,res){
 });
 
 app.get("/chat",function(req,res){
-
 	res.render('chat');
 });
 
@@ -85,6 +84,14 @@ app.get("/map",function(req,res){
 
 app.get("/signup",function(req,res){
 	res.render("signup");
+});
+
+app.get("/login",function(req,res){
+  res.render("login");
+});
+
+app.post("/login/new",function(req,res){
+  res.redirect('/');
 });
 
 //socket related stuff

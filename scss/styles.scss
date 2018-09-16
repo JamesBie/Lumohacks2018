@@ -8,6 +8,21 @@ body {
 	color: $primary-color;
 }
 
+.navbar {
+	a {
+		color: white;
+	}
+	background-color: $secondary-color;
+}
+
+.navbar-nav {
+	flex-direction: row;
+	li {
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+}
+
 .btn-primary {
 	background-color: $primary-color;
     border-color: $primary-color;
