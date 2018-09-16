@@ -20,6 +20,12 @@ app.use(methodOverride("_method"));
 
 mongoose.connect("mongodb://localhost/Lumohacks2018");
 
+//seeding database
+Profile.collection.drop();
+Profile.create({username:"james", street:"tyndall st", city: "coquitlam", province:"bc"});
+Profile.create({username:"andy", street:"university crescent", city: "burnaby", province:"bc"});
+Profile.create({username:"daniel", street:"kilrea crescent", city: "burnaby", province:"bc"});
+Profile.create({username:"george", street:"No 3 Rd", city: "richmond", province:"bc"});
 
 
 
