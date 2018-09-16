@@ -17,10 +17,15 @@ body {
     }
 }
 
-.no-transform {
-	transform: none;
-	will-change: inherit;
+.btn {
+	width: 100px;
 }
+
+.form-padding {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
 .form-group {
 	.dropdown {
 		position: relative;
