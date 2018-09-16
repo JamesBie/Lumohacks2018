@@ -2,9 +2,66 @@
 <html>
 <head>
 	<title>Map of the world!</title>
+	<% include partials/header.ejs %>
 </head>
 <body>
-	<p> <%= profiles%>
-		<img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=9fXg3632EGa2fROWQhKb&app_code=b2pw_rBboyH1RuQaiG90VA&c=49.26438,-122.8918 ">
+	<% include partials/navbar.ejs %>
+	<div id="map" />
+
+	<script>
+		function addMarkersToMap(map) {
+			// !!!!!!! pls forEach database here pls ty lel
+		  var parisMarker = new H.map.Marker({lat:48.8567, lng:2.3508});
+		  map.addObject(parisMarker);
+
+		  var romeMarker = new H.map.Marker({lat:41.9, lng: 12.5});
+		  map.addObject(romeMarker);
+
+		  var berlinMarker = new H.map.Marker({lat:52.5166, lng:13.3833});
+		  map.addObject(berlinMarker);
+
+		  var madridMarker = new H.map.Marker({lat:40.4, lng: -3.6833});
+		  map.addObject(madridMarker);
+
+		  var londonMarker = new H.map.Marker({lat:51.5008, lng:-0.1224});
+		  map.addObject(londonMarker);
+		}
+
+				//Step 1: initialize communication with the platform
+		var platform = new H.service.Platform({
+		  app_id: 'qqWJBfD6SnH0j2u3BFja',
+		  app_code: 'EkXcJ4AE48uDVni6glNAFg',
+			useCIT:true,
+		  useHTTPS: true
+		});
+		var defaultLayers = platform.createDefaultLayers();
+
+		//Step 2: initialize a map - this map is centered over Europe
+		var map = new H.Map(document.getElementById('map'),
+		  defaultLayers.normal.map,{
+		  center: {lat:50, lng:5}, // !!! ADD DATABASE CODE THAT TAKES USER'S LOCATION
+		  zoom: 4,
+		});
+
+		//Step 3: make the map interactive
+		// MapEvents enables the event system
+		// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+		var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+		// Create the default UI components
+		var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+		// Now use the map as required...
+		addMarkersToMap(map);
+	</script>
+
+	<section class="bg-green">
+		<div class="container text-center pt-3 pb-3">
+			<h1>Engage with your neighbours around the world!</h1>
+			<h3>Each marker is a friend that you have not met yet!</h3>
+		</div>
+	</section>
+
+	<% include partials/footer.ejs %>
 </body>
 </html>
