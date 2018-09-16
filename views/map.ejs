@@ -7,24 +7,24 @@
 <body>
 	<% include partials/navbar.ejs %>
 	<div id="map" />
-
+	<%console.log(currentProfile); %>
+	
 	<script>
+		
+
+        newprofiles= <%-JSON.stringify(profiles)%>;
+
+    
 		function addMarkersToMap(map) {
 			// !!!!!!! pls forEach database here pls ty lel
-		  var parisMarker = new H.map.Marker({lat:48.8567, lng:2.3508});
-		  map.addObject(parisMarker);
+			newprofiles.forEach(function(profile){ 
+				console.log(profile);
+			var parisMarker = new H.map.Marker({lat:profile.latitude, lng:profile.longitude});
+		  	map.addObject(parisMarker);
 
-		  var romeMarker = new H.map.Marker({lat:41.9, lng: 12.5});
-		  map.addObject(romeMarker);
+				 }); 
+		//	console.log(profiles);
 
-		  var berlinMarker = new H.map.Marker({lat:52.5166, lng:13.3833});
-		  map.addObject(berlinMarker);
-
-		  var madridMarker = new H.map.Marker({lat:40.4, lng: -3.6833});
-		  map.addObject(madridMarker);
-
-		  var londonMarker = new H.map.Marker({lat:51.5008, lng:-0.1224});
-		  map.addObject(londonMarker);
 		}
 
 				//Step 1: initialize communication with the platform
@@ -35,12 +35,13 @@
 		  useHTTPS: true
 		});
 		var defaultLayers = platform.createDefaultLayers();
-
+		currentUser= <%-JSON.stringify(currentProfile)%>;
 		//Step 2: initialize a map - this map is centered over Europe
 		var map = new H.Map(document.getElementById('map'),
 		  defaultLayers.normal.map,{
-		  center: {lat:50, lng:5}, // !!! ADD DATABASE CODE THAT TAKES USER'S LOCATION
-		  zoom: 4,
+
+		  center: {lat:currentUser.latitude, lng:currentUser.longitude}, // !!! ADD DATABASE CODE THAT TAKES USER'S LOCATION
+		  zoom: 10,
 		});
 
 		//Step 3: make the map interactive
