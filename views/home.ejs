@@ -4,8 +4,7 @@
 	<title> Home Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8"/>
-	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/main.css" rel="stylesheet" type="text/css">
+	<%  include partials/header.ejs %>
 </head>
 <body>
 	<% include partials/navbar.ejs %>
@@ -59,14 +58,9 @@
 			<div class="container text-center pt-3 pb-3">
 				<h1>&#10048;</h1>
 				<h4>How are you doing today?</h4>
-				<!-- <div class="col-md-4">
-					<h4>How are you doing today?</h4>
-				</div>
-				<div class="col-md-8">
-					<h3></h3>
-				</div> -->
 			</div>
 		</footer>
 	</div>
+	<% include partials/footer.ejs %>
 </body>
 </html>

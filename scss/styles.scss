@@ -141,8 +141,8 @@ body {
 	}
 }
 
-.left a span, .right a span { 
-	position:absolute; 
+.left a span, .right a span {
+	position:absolute;
 	width:100%;
 	height:100%;
 	top:0;
@@ -151,7 +151,7 @@ body {
 	/* edit: added z-index */
 	z-index: 1;
 
-  /* edit: fixes overlap error in IE7/8, 
+  /* edit: fixes overlap error in IE7/8,
   make sure you have an empty gif */
   background-image: url('empty.gif');
 }
@@ -163,4 +163,9 @@ body {
 	p {
 		font-size: 1.5rem;
 	}
+
+#map{
+	width: 100%;
+	height:600px;
+	background:$light-gray;
 }

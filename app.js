@@ -11,6 +11,7 @@ var onlineUsers = require("./models/online");
 var Profile = require ('./models/profile');
 var messageBoard = require('./models/messageboard');
 
+
 //chat connection
 var http = require ('http').Server(app);
 var io = require('socket.io')(http);
@@ -59,41 +60,43 @@ Profile.register(newUser,"password",function (err,user){
 	}
 })
 
-// https://geocoder.api.here.com/6.2/geocode.json
-//   ?app_id=3TLV83DXqx0TQQWiB9Fg
-//   &app_code=CdHErH1xR7ncjd4kIaKsRA
-//   &searchtext=tyndall+st+coquitlam+bc
+
 app.post("/signup/new",function(req,res){
-	var newUser = new Profile({username:req.body.username, address: req.body.address, city: req.body.city, province:req.body.province, latitude: 49.26438, longitude: -122.8918});
+	console.log("posting!!!");
+	 const https = require('https');
+	 var latitude,longitude;
+
+	 https.get('https://geocoder.api.here.com/6.2/geocode.json?app_id=T2HX3ezMDxnyFx5Qq5Ga&app_code=nUnD3Z9maMOip9DofCleRQ&searchtext='+req.body.address+"+"+req.body.city+"+"+req.body.province , (resp) => {
+	 	let data = '';
+
+	 	// A chunk of data has been recieved.
+	 	resp.on('data', (chunk) => {
+	 		data += chunk;
+	 	});
+
+	 	// The whole response has been received. Print out the result.
+	 	resp.on('end', () => {
+	 		var parsed = JSON.parse(data);JSON.parse(data)
+	 		var position = parsed["Response"]["View"]["0"]["Result"]["0"]["Location"]["DisplayPosition"];
+	 		latitude = position["Latitude"];
+	 		longitude = position["Longitude"];
+	 		console.log(longitude);
+
+	 		console.log(latitude);
+	var newUser = new Profile({username:req.body.username, address: req.body.address, city: req.body.city, province:req.body.province, latitude: latitude, longitude: longitude});
 Profile.register(newUser,"password",function (err,user){
 	if (err){
 		console.log(err);
 	}else{
 		passport.authenticate("local");
 	}
-});
-	console.log("posting!!!");
-	// const https = require('https');
+}); 
+	 	});
+	 }).on("error", (err) => {
+	 	console.log("Error: " + err.message);
+	 });
 
-	// https.get('https://geocoder.api.here.com/6.2/geocode.json?app_id=T2HX3ezMDxnyFx5Qq5Ga&app_code=nUnD3Z9maMOip9DofCleRQ&searchtext='+ 'kootenay'+ 'loop', (resp) => {
-	// 	let data = '';
-
-	// 	// A chunk of data has been recieved.
-	// 	resp.on('data', (chunk) => {
-	// 		data += chunk;
-	// 	});
-
-	// 	// The whole response has been received. Print out the result.
-	// 	resp.on('end', () => {
-	// 		var parsed = JSON.parse(data);JSON.parse(data)
-	// 		var position = parsed["Response"]["View"]["0"]["Result"]["0"]["Location"]["DisplayPosition"];
-	// 		var latitude = position["Latitude"];
-	// 		var longitude = position["Longitude"];
-	// 		console.log(longitude);
-	// 	});
-	// }).on("error", (err) => {
-	// 	console.log("Error: " + err.message);
-	// });
+	
 });
 
 
