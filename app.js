@@ -8,7 +8,8 @@ var express = require("express"),
 
 //mongoose
 var onlineUsers = require("./models/online");
-var Profile = require ('./models/profile')
+var Profile = require ('./models/profile');
+var messageBoard = require('./models/messageboard');
 
 //chat connection
 var http = require ('http').Server(app);
@@ -39,9 +40,6 @@ app.use(function(req, res, next){
    console.log(res.locals);
    next();
 });
-
-
-
 
 mongoose.connect("mongodb://localhost/Lumohacks2018");
 
@@ -103,6 +101,29 @@ app.get("/",function(req,res){
 	res.render("home");
 });
 
+app.get("/messageboard",function(req,res){
+	messageBoard.find({}, function(err, allMessages){
+		if (err){
+			console.log(err);
+		} else {
+			res.render('messageboard', { messages: allMessages});
+		}
+	});
+});
+
+app.post("/messageboard/new",function(req,res){
+	var currentProfile = res.locals.currentProfile;
+	messageBoard.create({id: currentProfile._id, username: currentProfile.username, message: req.body.message});
+	messageBoard.find({}, function(err, allMessages){
+		if (err){
+			console.log(err);
+		} else {
+			res.redirect('/messageboard');
+			// res.render('messageboard', { messages: allMessages});
+		}
+	}).sort({x:-1});
+});
+
 app.get("/chat",function(req,res){
 	res.render('chat');
 });
@@ -111,7 +132,7 @@ app.get("/map",function(req,res){
 	Profile.find({},function (err,allProfiles){
 		if (err){
 			console.log(err);
-		}else{
+		} else{
 			res.render('map', {profiles:allProfiles});
 		}
 	});
@@ -121,14 +142,11 @@ app.get("/signup",function(req,res){
 	res.render("signup");
 });
 
-
-
 app.get("/signout", function (req,res){
   {
     req.logout();
     res.redirect("/");
   }
-
 })
 
 

@@ -9,7 +9,9 @@ $light-gray: #e9ecef;
 body {
 	color: $green;
 }
-
+.no-margins {
+	margin: 0px;
+}
 .bg-green {
 
 	background-color: $green;
@@ -154,3 +156,11 @@ body {
   background-image: url('empty.gif');
 }
 
+.message {
+	h1 {
+		font-size: 2rem;
+	}
+	p {
+		font-size: 1.5rem;
+	}
+}

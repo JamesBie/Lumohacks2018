@@ -7,13 +7,14 @@
 		<ul class="nav navbar-nav">
 			<li><a href="/map">Map</a></li>
 			<li><a href="/chat">Chat</a></li>
-			 <% if (!currentProfile){ %>
+			<% if (!currentProfile){ %>
 			<li><a href="/signup">Sign Up</a></li>
 			<li><a href="/login">Login</a></li>
-			  <% } else { %>
-			  <p> Signed in as <b><%= currentProfile.username%></b> </p>
-			  <li><a href="/signout">Sign out</a></li>
-			   <% } %>
+			<% } else { %>
+			<li><a href="/messageboard">Message Board</a></li>
+			<p class="no-margins"> Signed in as <b><%= currentProfile.username%></b></p>
+			<li><a href="/signout">Sign out</a></li>
+			<% } %>
 		</ul>
 	</div>
 </nav>

@@ -6315,6 +6315,9 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   color: #2f8e5e; }
 
+.no-margins {
+  margin: 0px; }
+
 .bg-green {
   background-color: #2f8e5e;
   color: white; }
@@ -6429,3 +6432,9 @@ body {
   /* edit: fixes overlap error in IE7/8, 
   make sure you have an empty gif */
   background-image: url("empty.gif"); }
+
+.message h1 {
+  font-size: 2rem; }
+
+.message p {
+  font-size: 1.5rem; }
