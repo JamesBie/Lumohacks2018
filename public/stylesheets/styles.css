@@ -6314,3 +6314,25 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   color: #2f8e5e; }
+
+.btn-primary {
+  background-color: #2f8e5e;
+  border-color: #2f8e5e; }
+  .btn-primary:hover {
+    background-color: #2a8055;
+    border-color: #2a8055; }
+
+.no-transform {
+  transform: none;
+  will-change: inherit; }
+
+.form-group .dropdown {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px; }
+
+.form-check-input {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-left: 0px; }
