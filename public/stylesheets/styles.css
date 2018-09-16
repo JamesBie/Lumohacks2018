@@ -6439,6 +6439,9 @@ body {
 .message p {
   font-size: 1.5rem; }
 
+.message-list {
+  flex-direction: column; }
+
 #map {
   width: 100%;
   height: 600px;
