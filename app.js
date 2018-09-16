@@ -1,6 +1,3 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://heroku_14z7dgs1:rakb9o6e163llr5l8oqi8ao5ov@ds259732.mlab.com:59732/heroku_14z7dgs1";
-
 var express = require("express"),
 	app		= express(),
 	bodyParser = require("body-parser"),
@@ -19,12 +16,6 @@ var messageBoard = require('./models/messageboard');
 var http = require ('http').Server(app);
 var io = require('socket.io')(http);
 var online = 0;
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
