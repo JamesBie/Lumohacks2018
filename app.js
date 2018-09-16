@@ -36,7 +36,7 @@ app.get("/chat",function(req,res){
 io.on('connection', function(socket){
   console.log('a user connected');
   online = online + 1;
-  onlineUsers.create({username: socket.id}, function(err, user){
+  onlineUsers.create({id: socket.id, username: online}, function(err, user){
     if (err){
   		console.log(err);
   	}else{
@@ -46,7 +46,7 @@ io.on('connection', function(socket){
 
   	socket.on('disconnect', function(){
     console.log('user disconnected');
-    onlineUsers.findOneAndDelete({username: socket.id}, function(err, user){
+    onlineUsers.findOneAndDelete({id: socket.id}, function(err, user){
     	if (err){
     		console.log(err);
     	}else{
