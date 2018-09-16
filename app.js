@@ -14,6 +14,9 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
+mongoose.connect("mongodb://localhost/Lumohacks2018");
+
+
 
 
 app.get("/",function(req,res){
