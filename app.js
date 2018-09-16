@@ -12,6 +12,10 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
+app.post("/signup/new",function(req,res){
+	console.log("GOTTEM COACH");
+	res.redirect('/');
+})
 
 app.get("/",function(req,res){
 	res.render("home");
@@ -23,7 +27,6 @@ app.get("/chat",function(req,res){
 })
 
 app.get("/signup",function(req,res){
-
 	res.render("signup");
 })
 

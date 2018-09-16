@@ -1,8 +1,37 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 $primary-color: #2f8e5e;
+$primary-color-hover: #2a8055;
 $secondary-color: #3b3b3d;
 
 body {
 	color: $primary-color;
 }
+
+.btn-primary {
+	background-color: $primary-color;
+    border-color: $primary-color;
+    &:hover {
+    	background-color: $primary-color-hover;
+    	border-color: $primary-color-hover;
+    }
+}
+
+.no-transform {
+	transform: none;
+	will-change: inherit;
+}
+.form-group {
+	.dropdown {
+		position: relative;
+	    min-height: 1px;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	}
+}
+.form-check-input {
+	position: relative;
+    margin-top: 0.5rem;
+    margin-left: 0px;
+}
+
