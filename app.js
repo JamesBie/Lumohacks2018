@@ -62,10 +62,7 @@ Profile.register(newUser,"password",function (err,user){
 	}
 })
 
-// https://geocoder.api.here.com/6.2/geocode.json
-//   ?app_id=3TLV83DXqx0TQQWiB9Fg
-//   &app_code=CdHErH1xR7ncjd4kIaKsRA
-//   &searchtext=tyndall+st+coquitlam+bc
+
 app.post("/signup/new",function(req,res){
 	console.log("posting!!!");
 	 const https = require('https');
