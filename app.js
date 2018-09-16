@@ -2,7 +2,9 @@ var express = require("express"),
 	app		= express(),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
-	methodOverride	= require("method-override");
+	methodOverride	= require("method-override"),
+    passport = require("passport"),
+    LocalStrategy 	= require("passport-local");
 
 //mongoose
 var onlineUsers = require("./models/online");
@@ -18,8 +20,14 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
-app.post("/signup/new",function(req,res){
-	res.redirect('/');
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(Profile.authenticate()));
+passport.serializeUser(Profile.serializeUser());
+passport.deserializeUser(Profile.deserializeUser());
+app.use(function(req, res, next){
+   res.locals.currentProfile = req.profile; //this passes the user to everyone
+   next();
 });
 
 mongoose.connect("mongodb://localhost/Lumohacks2018");
@@ -36,10 +44,9 @@ Profile.create({username:"george", street:"No 3 Rd", city: "richmond", province:
 //    ?app_id=3TLV83DXqx0TQQWiB9Fg 
 //   &app_code=CdHErH1xR7ncjd4kIaKsRA 
 //   &searchtext=tyndall+st+coquitlam+bc
-
-
-app.post("/",function(req,res){
-	 const https = require('https');
+app.post("/signup/new",function(req,res){
+	console.log("posting!!!");
+	const https = require('https');
 
  https.get('https://geocoder.api.here.com/6.2/geocode.json?app_id=T2HX3ezMDxnyFx5Qq5Ga&app_code=nUnD3Z9maMOip9DofCleRQ&searchtext='+ 'kootenay'+ 'loop', (resp) => {
   let data = '';
@@ -61,6 +68,8 @@ app.post("/",function(req,res){
 }).on("error", (err) => {
   console.log("Error: " + err.message);
 });
+
+	res.redirect('/');
 });
 
 
@@ -86,6 +95,17 @@ app.get("/map",function(req,res){
 app.get("/signup",function(req,res){
 	res.render("signup");
 });
+
+
+
+app.get("/signout", function (req,res){
+  {
+    req.logout();
+    res.redirect("/");
+  }
+
+})
+
 
 //socket related stuff
 io.on('connection', function(socket){

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-
+var passportLocalMongoose = require("passport-local-mongoose");
 var ProfileSchema = new mongoose.Schema ({
 
 	username: String,
@@ -12,5 +12,5 @@ var ProfileSchema = new mongoose.Schema ({
 // }, {timestamps: true
 });
 
-
+ProfileSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model ("Profile", ProfileSchema);
