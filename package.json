@@ -26,6 +26,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.2.15",
     "node-sass": "^4.9.3",
+    "path": "^0.12.7",
+    "popper.js": "^1.14.4",
     "socket.io": "^2.1.1"
   }
 }
