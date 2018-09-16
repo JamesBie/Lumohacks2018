@@ -8,7 +8,7 @@ var express = require("express"),
 var onlineUsers = require("./models/online");
 var Profile = require ('./models/profile')
 
-//chat connection 
+//chat connection
 var http= require ('http').Server(app);
 var io = require('socket.io')(http);
 var online = 0;
@@ -36,8 +36,8 @@ app.get("/chat",function(req,res){
 io.on('connection', function(socket){
   console.log('a user connected');
   online = online + 1;
-  onlineUsers.create({username: online}, function(err, user){
-  	if (err){
+  onlineUsers.create({username: socket.id}, function(err, user){
+    if (err){
   		console.log(err);
   	}else{
   		console.log(user);
@@ -46,7 +46,7 @@ io.on('connection', function(socket){
 
   	socket.on('disconnect', function(){
     console.log('user disconnected');
-    onlineUsers.findOneAndDelete({username:online}, function(err, user){
+    onlineUsers.findOneAndDelete({username: socket.id}, function(err, user){
     	if (err){
     		console.log(err);
     	}else{
@@ -58,8 +58,8 @@ io.on('connection', function(socket){
 
 });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
+io.on('connection', function(socket)
+{  socket.on('chat message', function(msg){
     console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
