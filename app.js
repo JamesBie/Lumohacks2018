@@ -48,8 +48,8 @@ app.get("/signup",function(req,res){
 io.on('connection', function(socket){
   console.log('a user connected');
   online = online + 1;
-  onlineUsers.create({username: online}, function(err, user){
-  	if (err){
+  onlineUsers.create({id: socket.id, username: online}, function(err, user){
+    if (err){
   		console.log(err);
   	}else{
   		console.log(user);
@@ -58,12 +58,12 @@ io.on('connection', function(socket){
 
   	socket.on('disconnect', function(){
     console.log('user disconnected');
-    onlineUsers.findOneAndDelete({username:online}, function(err, user){
+    onlineUsers.findOneAndDelete({id: socket.id}, function(err, user){
     	if (err){
     		console.log(err);
     	}else{
     		console.log(user);
-    		online = online -1;
+    		online = online - 1;
     	}
     	});
 	});
@@ -72,8 +72,14 @@ io.on('connection', function(socket){
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
+  onlineUsers.findOne({id: socket.id}, function(err, result){
+      if (err){
+        console.log(err);
+      }else{
+        var user = result.username;
+        io.emit('chat message', user + ": " + msg);
+      }
+      });
   });
 });
 
