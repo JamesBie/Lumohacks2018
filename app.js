@@ -4,6 +4,8 @@ var express = require("express"),
 	mongoose = require("mongoose"),
 	methodOverride	= require("method-override");
 
+
+//chat connection 
 var http= require ('http').Server(app);
 var io = require('socket.io')(http);
 
@@ -13,18 +15,32 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
 
+
 app.get("/",function(req,res){
 	res.render("home");
 });
 
 app.get("/chat",function(req,res){
 
-	res.render("chat");
+	res.render('chat');
 })
 
+//socket related stuff
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+});
 
-app.listen(process.env.PORT || 3000, process.env.IP,function(){
+http.listen(process.env.PORT || 3000, process.env.IP,function(){
 
 	console.log("server started");
 })
