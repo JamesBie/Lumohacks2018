@@ -136,6 +136,7 @@ app.get("/login",function(req,res){
 	res.render("login");
 });
 
+<<<<<<< HEAD
 
 app.post("/login",passport.authenticate("local",
 		{
@@ -146,6 +147,10 @@ app.post("/login",passport.authenticate("local",
 
 	) ,function(req,res){
 
+=======
+app.post("/login/new",function(req,res){
+	res.redirect('/');
+>>>>>>> bf055a0505b7d1d3f5dda94e5f120b663a72e6b6
 });
 
 //socket related stuff

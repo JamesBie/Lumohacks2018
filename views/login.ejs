@@ -8,11 +8,17 @@
 	<% include partials/navbar.ejs %>
 	<div class="container mt-3">
 		<h1 class="text-center">Login</h1>
-		<form class="mb-3" action="/login/new" method="post">
+		<form class="mb-3" action="/login" method="post">
 			<div class="form-group row">
 				<label for="username" class="col-2 col-form-label">Username</label>
 				<div class="col-10">
-					<input class="form-control" type="text" value="" placeholder="jvdet1950">
+					<input class="form-control" name="username" type="text" value="" placeholder="jvdet1950">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="username" class="col-2 col-form-label">password</label>
+				<div class="col-10">
+					<input class="form-control" name="password" type="password" value="" placeholder="password">
 				</div>
 			</div>
 			<div class="text-center">
