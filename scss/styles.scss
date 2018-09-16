@@ -109,35 +109,35 @@ body {
 	position: absolute;
 	color: white;
 	width: 100%;
-  	height: 100%;
-  	z-index: 0;
+	height: 100%;
+	z-index: 0;
 }
 
 .left-child {
 	background-color: black; /* fallback color */
-  	background-image: url('/images/civilians.jpg');
-  	background-position: center;
-  	background-size: cover;
+	background-image: url('/images/civilians.jpg');
+	background-position: center;
+	background-size: cover;
 }
 
 .right-child {
 	background-color: black; /* fallback color */
-  	background-image: url('/images/veteran.jpg');
-  	background-position: center;
-  	background-size: cover;
+	background-image: url('/images/veteran.jpg');
+	background-position: center;
+	background-size: cover;
 }
 
 .left:hover {
 	.left-child {
 		transition: all .5s;
-  		transform: scale(1.1);
+		transform: scale(1.1);
 	}
 }
 
 .right:hover {
 	.right-child {
 		transition: all .5s;
-  		transform: scale(1.1);
+		transform: scale(1.1);
 	}
 }
 
@@ -145,7 +145,7 @@ body {
 	position:absolute;
 	width:100%;
 	height:100%;
-	top:0;
+	top: 0;
 	left: 0;
 
 	/* edit: added z-index */
@@ -163,9 +163,10 @@ body {
 	p {
 		font-size: 1.5rem;
 	}
+}
 
-#map{
+#map {
 	width: 100%;
-	height:600px;
-	background:$light-gray;
+	height: 600px;
+	background: $light-gray;
 }
