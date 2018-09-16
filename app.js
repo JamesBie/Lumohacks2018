@@ -47,9 +47,9 @@ mongoose.connect("mongodb://localhost/Lumohacks2018");
 //seeding database
 Profile.collection.drop();
 //Profile.create({username:"james",password:"password", street:"tyndall st", city: "coquitlam", province:"bc", latitude: 49.26438, longitude: -122.8918});
-Profile.create({username:"andy",password:"password", street:"university crescent", city: "burnaby", province:"bc", latitude: 49.26438, longitude: -122.8918});
-Profile.create({username:"daniel",password:"password", street:"kilrea crescent", city: "burnaby", province:"bc", latitude: 49.26438, longitude: -122.8918});
-Profile.create({username:"george",password:"password", street:"No 3 Rd", city: "richmond", province:"bc", latitude: 49.26438, longitude: -122.8918});
+Profile.create({username:"andy",password:"password", street:"university crescent", city: "burnaby", province:"bc", latitude: 49.28011, longitude: -122.9084});
+Profile.create({username:"daniel",password:"password", street:"kilrea crescent", city: "burnaby", province:"bc", latitude: 49.25925, longitude: -122.94362});
+Profile.create({username:"george",password:"password", street:"No 3 Rd", city: "richmond", province:"bc", latitude: 49.17742, longitude: -123.13669});
 //add to authentication
 var newUser = new Profile({username:"james", street:"tyndall st", city: "coquitlam", province:"bc", latitude: 49.26438, longitude: -122.8918});
 Profile.register(newUser,"password",function (err,user){
@@ -136,7 +136,7 @@ app.get("/map",function(req,res){
 		if (err){
 			console.log(err);
 		} else{
-			res.render('map', {profiles:allProfiles});
+			res.render('map', {profiles: allProfiles, currentProfile:res.locals.currentProfile});
 		}
 	});
 });
