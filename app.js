@@ -22,7 +22,10 @@ app.get("/chat",function(req,res){
 	res.render("chat");
 })
 
+app.get("/signup",function(req,res){
 
+	res.render("signup");
+})
 
 app.listen(process.env.PORT || 3000, process.env.IP,function(){
 
