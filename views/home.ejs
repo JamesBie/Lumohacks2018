@@ -7,27 +7,7 @@
 	<% include partials/header.ejs %>
 </head>
 <body>
-	<!-- Header -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="">&#9732; SpaceBar</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<% if (!currentProfile) {%>
-					<li><a href="/signup">Sign Up</a></li>
-					<li><a href="/signup">Login</a></li>
-				<%}else { %>
-					<li class = "nav-item active">
-			        <a class= "nav-link" href = "/profile" > Signed in as <b><%= currentProfile.username%></b> <span class= "sr-only" > (current)</span></a>
-			      	</li>
-
-					<li><a href="/signout">Sign Out </a><li>
-				<%}%>
-			</ul>
-		</div>
-	</nav>
-
+	<% include partials/navbar.ejs %>
 	<!-- The Split Screen -->
 	<!-- <section class="jumbotron" style="width:100%"> -->
 		<div id="splitted" class="row">

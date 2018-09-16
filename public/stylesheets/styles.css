@@ -6315,6 +6315,17 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   color: #2f8e5e; }
 
+.navbar {
+  background-color: #3b3b3d; }
+  .navbar a {
+    color: white; }
+
+.navbar-nav {
+  flex-direction: row; }
+  .navbar-nav li {
+    margin-left: 8px;
+    margin-right: 8px; }
+
 .btn-primary {
   background-color: #2f8e5e;
   border-color: #2f8e5e; }
@@ -6322,9 +6333,12 @@ body {
     background-color: #2a8055;
     border-color: #2a8055; }
 
-.no-transform {
-  transform: none;
-  will-change: inherit; }
+.btn {
+  width: 100px; }
+
+.form-padding {
+  padding-top: 15px;
+  padding-bottom: 15px; }
 
 .form-group .dropdown {
   position: relative;

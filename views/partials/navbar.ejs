@@ -1,0 +1,19 @@
+<!-- Header -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="">&#9732; SpaceBar</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/map">Map</a></li>
+			<li><a href="/chat">Chat</a></li>
+			 <% if (!currentProfile){ %>
+			<li><a href="/signup">Sign Up</a></li>
+			<li><a href="/login">Login</a></li>
+			  <% } else { %>
+			  <p> Signed in as <b><%= currentProfile.username%></b> </p>
+			  <li><a href="/signout">Sign out</a></li>
+			   <% } %>
+		</ul>
+	</div>
+</nav>
