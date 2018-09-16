@@ -22,11 +22,42 @@ mongoose.connect("mongodb://localhost/Lumohacks2018");
 
 //seeding database
 Profile.collection.drop();
-Profile.create({username:"james", street:"tyndall st", city: "coquitlam", province:"bc"});
-Profile.create({username:"andy", street:"university crescent", city: "burnaby", province:"bc"});
-Profile.create({username:"daniel", street:"kilrea crescent", city: "burnaby", province:"bc"});
-Profile.create({username:"george", street:"No 3 Rd", city: "richmond", province:"bc"});
+Profile.create({username:"james", street:"tyndall st", city: "coquitlam", province:"bc", latitude: 49.26438, longitude: -122.8918});
+Profile.create({username:"andy", street:"university crescent", city: "burnaby", province:"bc",latitude: 49.26438, longitude: -122.8918});
+Profile.create({username:"daniel", street:"kilrea crescent", city: "burnaby", province:"bc",latitude: 49.26438, longitude: -122.8918});
+Profile.create({username:"george", street:"No 3 Rd", city: "richmond", province:"bc",latitude: 49.26438, longitude: -122.8918});
 
+
+// https://geocoder.api.here.com/6.2/geocode.json
+//    ?app_id=3TLV83DXqx0TQQWiB9Fg 
+//   &app_code=CdHErH1xR7ncjd4kIaKsRA 
+//   &searchtext=tyndall+st+coquitlam+bc
+
+
+app.post("/",function(req,res){
+	 const https = require('https');
+
+ https.get('https://geocoder.api.here.com/6.2/geocode.json?app_id=T2HX3ezMDxnyFx5Qq5Ga&app_code=nUnD3Z9maMOip9DofCleRQ&searchtext='+ 'kootenay'+ 'loop', (resp) => {
+  let data = '';
+
+  // A chunk of data has been recieved.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    var parsed = JSON.parse(data);JSON.parse(data)
+    var position = parsed["Response"]["View"]["0"]["Result"]["0"]["Location"]["DisplayPosition"];
+    var latitude = position["Latitude"];
+    var longitude = position["Longitude"];
+    console.log(longitude);
+  });
+
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
+});
+});
 
 
 app.get("/",function(req,res){
@@ -36,7 +67,17 @@ app.get("/",function(req,res){
 app.get("/chat",function(req,res){
 
 	res.render('chat');
-})
+});
+
+app.get("/map",function(req,res){
+	Profile.find({},function (err,allProfiles){
+		if (err){
+			console.log(err);
+		}else{
+	res.render('map', {profiles:allProfiles});
+}
+	});
+});
 
 //socket related stuff
 io.on('connection', function(socket){

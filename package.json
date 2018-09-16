@@ -20,6 +20,7 @@
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "https": "^1.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.2.15",
     "socket.io": "^2.1.1",
