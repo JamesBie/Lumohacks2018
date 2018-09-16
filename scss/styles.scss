@@ -1,18 +1,55 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-$primary-color: #2f8e5e;
-$primary-color-hover: #2a8055;
-$secondary-color: #3b3b3d;
+$green: #2f8e5e;
+$green-hover: #2a8055;
+$gray: #3b3b3d;
+$orange: #f9a52f;
+$light-gray: #e9ecef;
 
 body {
-	color: $primary-color;
+	color: $green;
 }
 
+.bg-green {
+
+	background-color: $green;
+	color: white;
+}
+
+.bg-orange {
+	background-color: $orange;
+	color: white;
+}
+
+.bg-gray {
+	background-color: $gray;
+	color: white;
+}
+
+.bg-light-gray {
+	background-color: $light-gray;
+	color: $green;
+}
+
+.container-fluid.no-gutters {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.row.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+}
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .navbar {
 	a {
 		color: white;
 	}
-	background-color: $secondary-color;
+	background-color: $gray;
 }
 
 .navbar-nav {
@@ -24,12 +61,12 @@ body {
 }
 
 .btn-primary {
-	background-color: $primary-color;
-    border-color: $primary-color;
-    &:hover {
-    	background-color: $primary-color-hover;
-    	border-color: $primary-color-hover;
-    }
+	background-color: $green;
+	border-color: $green;
+	&:hover {
+		background-color: $green-hover;
+		border-color: $green-hover;
+	}
 }
 
 .btn {
@@ -44,14 +81,76 @@ body {
 .form-group {
 	.dropdown {
 		position: relative;
-	    min-height: 1px;
-	    padding-right: 15px;
-	    padding-left: 15px;
+		min-height: 1px;
+		padding-right: 15px;
+		padding-left: 15px;
 	}
 }
 .form-check-input {
 	position: relative;
-    margin-top: 0.5rem;
-    margin-left: 0px;
+	margin-top: 0.5rem;
+	margin-left: 0px;
+}
+
+.left, .right {
+	height: 250px;
+	width: auto;
+	overflow: hidden;
+	color: white;
+}
+
+.left-text, .right-text {
+	z-index: 10;
+}
+
+.left-child, .right-child {
+	position: absolute;
+	color: white;
+	width: 100%;
+  	height: 100%;
+  	z-index: 0;
+}
+
+.left-child {
+	background-color: black; /* fallback color */
+  	background-image: url('/images/civilians.jpg');
+  	background-position: center;
+  	background-size: cover;
+}
+
+.right-child {
+	background-color: black; /* fallback color */
+  	background-image: url('/images/veteran.jpg');
+  	background-position: center;
+  	background-size: cover;
+}
+
+.left:hover {
+	.left-child {
+		transition: all .5s;
+  		transform: scale(1.1);
+	}
+}
+
+.right:hover {
+	.right-child {
+		transition: all .5s;
+  		transform: scale(1.1);
+	}
+}
+
+.left a span, .right a span { 
+	position:absolute; 
+	width:100%;
+	height:100%;
+	top:0;
+	left: 0;
+
+	/* edit: added z-index */
+	z-index: 1;
+
+  /* edit: fixes overlap error in IE7/8, 
+  make sure you have an empty gif */
+  background-image: url('empty.gif');
 }
 

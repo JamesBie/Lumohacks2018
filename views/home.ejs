@@ -4,70 +4,69 @@
 	<title> Home Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8"/>
-	<% include partials/header.ejs %>
+	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<% include partials/navbar.ejs %>
 	<!-- The Split Screen -->
-	<!-- <section class="jumbotron" style="width:100%"> -->
-		<div id="splitted" class="row">
-			<figure class="split col-md-6 h-100 no-padding">
-			  <div class="centered" style="color:#3b3b3d; background-color:#2f8e5e">
-			    <h3>I am a</h3>
-			    <h2>Civilian</h2>
-					<Button>Login</Button>
-			  </div>
-			</figure>
-
-			<figure class="split col-md-6 h-100 no-padding">
-			  <div class="centered" style="color:#2f8e5e;background-color:#3b3b3d">
-			    <h3>I am a</h3>
-			    <h2>Veteran or First Responder</h2>
-					<Button>Login</Button>
-			  </div>
-			</figure>
-		</div>
-	<!-- </section> -->
-
-	<!-- About Section -->
-	<section class="jumbotron" style="background-color: #3b3b3d">
-		<div class="container" style="text-align:center">
-			<h1>What is this?</h1>
-			<h3>Come reach out to our vetrans or first-responders who are on SpaceBar!</h3>
-		</div>
-	</section>
-	<section style="background-color:#2f8e5e">
-		<div class="container" style="text-align:center">
-			<h1>Reach Out</h1>
-			<h3>Whether you have served with our forces or want to provide a helping hand,</h3>
-		</div>
-	</section>
-	<section style="background-color:#2f8e5e">
-		<div class="container" style="text-align:center">
-			<h1>Share</h1>
-			<h3>Respond and interact through the integrated chat system!</h3>
-		</div>
-	</section>
-	<section id="testing" class="jumbotron">
-		<div class="container" style="text-align:center">
-			<h1>Connect</h1>
-			<h3>Grab a coffee with your local responders!</h3>
-		</div>
-	</section>
-
-	<footer class="row">
-		<div class="container">
-			<div class="col-md-4">
-				<h3>How are you doing today?</h3>
-				<ul>
-					<li></li>
-				</ul>
+	<div class="container-fluid no-gutters">
+		<div class="row no-gutters">
+			<div class="left col-md-6 text-center flex-center">
+				<div class="left-child"></div>
+				<div class="right-text">
+				<a href="/signup"><span></span></a>
+				<h1>I am a<br>Civilian</h1>
+				</div>
 			</div>
-			<div class="col-md-8">
-				<h3></h3>
+			<div class="right col-md-6 text-center flex-center">
+				<div class="right-child"></div>
+				<div class="right-text">
+					<a href="/signup"><span></span></a>
+					<h1>I am a<br>Veteran or First Responder</h1>
+				</div>
 			</div>
 		</div>
-	</footer>
 
+		<!-- About Section -->
+		<section class="bg-orange pt-3 pb-3">
+			<div class="container text-center pt-3 pb-3">
+				<h1>What is this?</h1>
+				<h3>Come reach out to our vetrans or first-responders who are on SpaceBar!
+				We are an inclusive community of individuals who strive to help each other.</h3>
+			</div>
+		</section>
+		<section class="bg-gray pt-3 pb-3">
+			<div class="container text-center pt-3 pb-3">
+				<h1>Reach Out</h1>
+				<h3>Whether you have served with our forces or want to provide a helping hand,</h3>
+			</div>
+		</section>
+		<section class="bg-green pt-3 pb-3">
+			<div class="container text-center pt-3 pb-3">
+				<h1>Share</h1>
+				<h3>Respond and interact through the integrated chat system!</h3>
+			</div>
+		</section>
+		<section class="bg-light-gray pt-3 pb-3">
+			<div class="container text-center pt-3 pb-3">
+				<h1>Connect</h1>
+				<h3>Grab a coffee with your local responders!</h3>
+			</div>
+		</section>
+
+		<footer class="row pt-3 pb-3">
+			<div class="container text-center pt-3 pb-3">
+				<h1>&#10048;</h1>
+				<h4>How are you doing today?</h4>
+				<!-- <div class="col-md-4">
+					<h4>How are you doing today?</h4>
+				</div>
+				<div class="col-md-8">
+					<h3></h3>
+				</div> -->
+			</div>
+		</footer>
+	</div>
 </body>
 </html>
