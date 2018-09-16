@@ -33,7 +33,7 @@ Profile.create({username:"george", street:"No 3 Rd", city: "richmond", province:
 
 
 // https://geocoder.api.here.com/6.2/geocode.json
-//    ?app_id=3TLV83DXqx0TQQWiB9Fg
+//   ?app_id=3TLV83DXqx0TQQWiB9Fg
 //   &app_code=CdHErH1xR7ncjd4kIaKsRA
 //   &searchtext=tyndall+st+coquitlam+bc
 
@@ -86,11 +86,11 @@ app.get("/signup",function(req,res){
 });
 
 app.get("/login",function(req,res){
-  res.render("login");
+	res.render("login");
 });
 
 app.post("/login/new",function(req,res){
-  res.redirect('/');
+	res.redirect('/');
 });
 
 //socket related stuff
