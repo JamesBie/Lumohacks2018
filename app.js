@@ -51,17 +51,23 @@ io.on('connection', function(socket){
     		console.log(err);
     	}else{
     		console.log(user);
-    		online = online -1;
+    		online = online - 1;
     	}
     	});
 	});
 
 });
 
-io.on('connection', function(socket)
-{  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+  onlineUsers.findOne({id: socket.id}, function(err, result){
+      if (err){
+        console.log(err);
+      }else{
+        var user = result.username;
+        io.emit('chat message', user + ": " + msg);
+      }
+      });
   });
 });
 
