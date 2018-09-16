@@ -4,14 +4,27 @@
 	<title> Home Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8"/>
-	<% include partials/header.ejs %>
+	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<% include partials/navbar.ejs %>
+	<!-- Header -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="">&#9732; SpaceBar</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="signup.ejs">Sign Up</a></li>
+				<li><a href="signup.ejs">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+
 	<!-- The Split Screen -->
 	<!-- <section class="jumbotron" style="width:100%"> -->
-		<div id="splitted" class="row">
-			<figure class="split col-md-6 h-100 no-padding">
+		<div id="splitted" class="row" style="height:100%">
+			<figure class="split col-md-6 no-padding" style="height:100%;">
 			  <div class="centered" style="color:#3b3b3d; background-color:#2f8e5e">
 			    <h3>I am a</h3>
 			    <h2>Civilian</h2>
@@ -19,7 +32,7 @@
 			  </div>
 			</figure>
 
-			<figure class="split col-md-6 h-100 no-padding">
+			<figure class="split col-md-6 no-padding" style="height:100%;">
 			  <div class="centered" style="color:#2f8e5e;background-color:#3b3b3d">
 			    <h3>I am a</h3>
 			    <h2>Veteran or First Responder</h2>
@@ -30,14 +43,15 @@
 	<!-- </section> -->
 
 	<!-- About Section -->
-	<section class="jumbotron" style="background-color: #3b3b3d">
+	<section style="background-color: #f9a52f;color:white;  ">
 		<div class="container" style="text-align:center">
 			<h1>What is this?</h1>
-			<h3>Come reach out to our vetrans or first-responders who are on SpaceBar!</h3>
+			<h3>Come reach out to our vetrans or first-responders who are on SpaceBar!
+			We are an inclusive community of individuals who strive to help each other.</h3>
 		</div>
 	</section>
-	<section style="background-color:#2f8e5e">
-		<div class="container" style="text-align:center">
+	<section style="background-color:#3b3b3d; height:100%;">
+		<div class="container" style="text-align:center; height:100%;">
 			<h1>Reach Out</h1>
 			<h3>Whether you have served with our forces or want to provide a helping hand,</h3>
 		</div>
@@ -57,8 +71,9 @@
 
 	<footer class="row">
 		<div class="container">
+			<h1 style="text-align:center;">&#10048;</h1>
 			<div class="col-md-4">
-				<h3>How are you doing today?</h3>
+				<h4>How are you doing today?</h4>
 				<ul>
 					<li></li>
 				</ul>
